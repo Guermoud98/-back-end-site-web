@@ -3,7 +3,9 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
-
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     background: url('../img/bg.jpg') no-repeat center center fixed;
@@ -11,6 +13,15 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    /* --adding some properties */
+    /* display: flex;
+    align-items: flex;
+    justify-content: center; */
+    /* min-height: 90vh;
+    margin: 50; */
+  
+
+
 }
 
 h1,
@@ -190,3 +201,62 @@ footer p {
         clear: both;
     }
 }
+
+/*-------------------------------Registration ------------------------*/
+
+/* .container-form {
+    background-color: beige;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4) ;
+    width: 500px;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+ .header {
+     background-color: #61422f;
+     border-bottom: 1px solid bisque;
+     padding : 20px 40px;
+     
+ }
+ .header h2 {
+     margin: 0;
+     text-align: center;
+ }
+ .form {
+     padding:  30px 40px ;
+ }
+ .form-control {
+     margin-bottom: 10px;
+     padding: 5px;
+     position: relative;
+ }
+ .form-control label  {
+    margin-bottom: 10px;
+ }
+ .form-control input {
+     border : 2px solid #f0f0f0;
+     border-radius: 4px;
+     display: block;
+     font-family: inherit;
+     font-size: 14px;
+     padding: 10px;
+     width: 100%;
+
+ }
+
+ .form button {
+     background-color: #61422f;
+     border : 2x solid #61422f;
+     border-radius: 4px;
+     color: #fff;
+     display: block;
+     font-family: inherit;
+     font-size: 16px;
+     padding: 10px;
+     width: 100%;
+ }
+ small {
+     display: none;
+     color: red;
+ } */
