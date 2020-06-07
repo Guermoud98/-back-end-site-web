@@ -1,3 +1,24 @@
+<?php
+
+
+
+include 'database.php';
+$error = "";
+if(isset($_POST['login'])) {
+
+} else {
+   
+}
+
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +89,7 @@
                                 <input type="password" id="password" name="password" maxlength="25" class="form-control">
                             </div>
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="contact" class="btn btn-default">Submit</button>
+                                <button type="submit" id="contact" name="login" class="btn btn-default">Submit</button>
                             </div>
                             <div class="form-group col-lg-4">
                             <a href="registration.php" class="btn btn-default">Not a member? register here</a>

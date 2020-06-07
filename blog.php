@@ -63,7 +63,8 @@
                         <small>October 13, 2013</small>
                     </h2>
                     <p>Start your morning off with this great recipe for hot coffee with coconut oil and butter.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <!-- <a href="#" class="btn btn-default btn-lg">Read More</a> -->
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
                      <hr>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -73,7 +74,8 @@
                         <small>October 13, 2013</small>
                     </h2>
                     <p>Take the edge off with a fresh hot cup of coffee make with Irish whiskey and Irish cream.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <!-- <a href="#" class="btn btn-default btn-lg">Read More</a> -->
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
                      <hr>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -83,7 +85,8 @@
                         <small>October 13, 2013</small>
                     </h2>
                     <p>Sweetened with caramel sauce and topped with whipped cream, this will make you happy any time of the day.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <!-- <a href="#" class="btn btn-default btn-lg">Read More</a> -->
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
