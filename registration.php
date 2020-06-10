@@ -15,7 +15,7 @@ if(isset($_POST['create'])) {
    $lastName = strtolower(trim($_POST['lname']));
    $email = strtolower(trim($_POST['email']));
    $password = strtolower(trim($_POST['password']));
-   $password = md5($password);
+   
 
 //    $firstname = mysqli_real_escape_string($conn,$firstName);
 //    $lastname = mysqli_real_escape_string($conn,$lastName);
@@ -71,11 +71,14 @@ le $: (dollar) : indique la fin d'une chaîne.
          if(!strlen($password) > 6 && !preg_match("/^[a-zA-Z0-9]{:,*,;,<}*$/", $password) ) {
             $error = " <div class='alert alert-danger'>invalid password </div>";
          }
+         
           else {
+              
             $query = "INSERT INTO users(fname_users,lname_users,email_users,password_users) VALUES ('{$firstName}','{$lastName}','{$email}','{$password}')";
             $result = mysqli_query($conn,$query) or die(mysqli_error($dbName));
+
             echo "saved";
-            exit();
+            
          }
 
          
@@ -173,7 +176,7 @@ le $: (dollar) : indique la fin d'une chaîne.
                         <strong>form</strong>
                     </h2>
                     <hr>
-                    <div id="add_err2"> <?php echo $error?> </div>
+                    <div id="add_err2"> <?php echo $error ; ?> </div>
                     <form  action="registration.php" method="post">
                         <div class="row">
                             <div class="form-group col-lg-4">

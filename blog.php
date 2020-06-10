@@ -1,3 +1,36 @@
+<?php 
+
+$serverName = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "datab";
+
+$conn = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName, 3308);
+
+// Check connection
+// if (!$conn) {
+//     die("connection failed:  ".mysqli_connect_error()) ;
+    
+//   }
+//   else {
+//       echo("connection successful");
+//   }
+
+?> 
+
+
+<?php ob_start(); ?>
+
+<?php
+
+session_start();
+if (isset($_SESSION['id'])) {
+    $fname = $_SESSION['fname'];
+    $lname = $_SESSION['lname'];
+
+    $full_name = $fname . " " . $lname;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +42,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The Perfect Cup - Blog</title>
+    <title>The Perfect Cup - Blog </title>
    
 
     <!-- Bootstrap Core CSS -->
@@ -50,8 +83,9 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
+                <h2 class="text-center">Welcome <?php echo $full_name?> </h2>
                     <hr>
-                    <h2 class="intro-text text-center">The Perfect Cup
+                    <h2 class="intro-text text-center">The Perfect Cup <a id="logout" href="logout.php">logout</a>
                         <strong>blog</strong>
                     </h2>
                     <hr>
@@ -171,3 +205,12 @@
 </body>
 
 </html>
+
+<?php
+
+}
+else {
+    header("location:login.php");
+}
+
+?>

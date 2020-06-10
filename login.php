@@ -1,24 +1,4 @@
-<?php
-
-
-
-include 'database.php';
-$error = "";
-if(isset($_POST['login'])) {
-
-} else {
-   
-}
-
-
-
-
-
-?>
-
-
-
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,6 +42,81 @@ if(isset($_POST['login'])) {
    <?php include 'navbar.php'; ?>
 
 <!-- END Navigation -->
+
+
+<?php
+
+
+    $message = "";
+if (isset($_POST['login'])) {
+
+    
+
+    $serverName = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+    $dbName = "datab";
+    
+    $conn = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName, 3308);
+    
+    // Check connection
+    // if (!$conn) {
+    //     die("connection failed:  ".mysqli_connect_error()) ;
+        
+    //   }
+    //   else {
+    //       echo("connection successful");
+    //   }
+    
+    
+
+    
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+   
+
+    $query = "SELECT * FROM users WHERE email_users = '{$email}'";
+    $login_query = mysqli_query($conn,$query);
+
+    if (!$login_query) {
+        die("QUERY FAILED" . mysqli_error($conn));
+    }
+
+    while($row = mysqli_fetch_assoc($login_query)){
+        $db_id = $row['id_users'];
+        $db_email = $row['email_users'];
+        $db_password = $row['password_users'];
+        $db_fname = $row['fname_users'];
+        $db_lname = $row['lname_users'];
+    } 
+    $row_count = mysqli_num_rows($login_query);
+
+    if ($row_count < 1) {
+        $message = "<div class='alert alert-danger'>this email does not exist, try again or <a href='register.php'>register</a> </div>";
+    }else {
+        if ($password === $db_password) {
+            // $message = "<div class='alert alert-success'>Welcome $db_fname </div>";
+            $_SESSION['id'] = $db_id;
+            $_SESSION['fname'] = $db_fname;
+            $_SESSION['lname'] = $db_lname;
+
+            header('location: blog.php');
+        } else{
+            $message =  "<div class='alert alert-danger'>your password is incorrect</div>";
+        }
+    }
+    
+
+
+
+}
+
+?>  
+
+
+
+
     
     
 
@@ -77,8 +132,10 @@ if(isset($_POST['login'])) {
                         <strong>form</strong>
                     </h2>
                     <hr>
-                    <div id="add_err2"></div>
-                    <form role="form">
+                    <div id="add_err2"> 
+                    <?php echo $message ?>
+                    </div>
+                    <form role="form" action="login.php" method="post">
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <label>Email Address</label>
