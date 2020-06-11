@@ -81,7 +81,7 @@ le $: (dollar) : indique la fin d'une chaîne.
             
          }
 
-         
+         require_once 'PHPMailer-5.2-stable/class.phpmailer.php';
 
 
         }
@@ -92,16 +92,6 @@ le $: (dollar) : indique la fin d'une chaîne.
 
 
 
-//    $query = "INSERT INTO users(fname_users,lname_users,email_users,password_users)";
-//    $query .=  "VALUES ('$firstName','$lastName','$email','$password')";
-//    $result = mysqli_query($conn,$query);
-
-//    if(!$result) {
-//        die ('query failed ' . mysqli_error());
-//    }
-
-
-
 
 
 
@@ -109,14 +99,7 @@ le $: (dollar) : indique la fin d'une chaîne.
    
 
       
-   //error
 
-
-//      if (filter_var($email_a, FILTER_VALIDATE_EMAIL)) {
-//             echo "L'adresse email '$email_a' est considérée comme valide.";
-//         }
-//     exit();
-// }
 
 
 ?>

@@ -1,3 +1,38 @@
+<?php 
+
+     $result = "";
+     if(isset($_POST['submit'])) {
+     require 'PHPMailer/PHPMailerAutoload.php';
+     $mail = new PHPMailer;
+
+     $mail->isSMTP();   
+     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+     $mail->Username   = 'Tasty.foods1998@gmail.com';                     // SMTP username
+     $mail->Password   = 'Tasty98:*Yes';                               // SMTP password
+     $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+     $mail->Port       = 587;   
+     
+     $mail->setFrom($_POST['email'], $_POST['name'] );
+     $mail->addAddress('guermoud.maria@gmail.com');     // Add a recipient
+     $mail->addReplyTo($_POST['email'], $_POST['name'] );
+
+     $mail->isHTML(true);                                  // Set email format to HTML
+     $mail->Subject = 'Coucou';
+     $mail->Body    = '<h1 align center = center> Name : '.$_POST['name'] .' <br> Email: '.$_POST['email']. '<br> Message: '.$_POST['message']. '</h1>';
+    
+     if(!$mail->send()) {
+        $result =  "<div class='alert alert-danger'>Message has not been sent </div>";
+     } 
+     else {
+         $result = "<div class='alert alert-info'> Thank you for contacting us.</div>";
+     }
+
+    }
+     
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,12 +113,12 @@
                         <strong>form</strong>
                     </h2>
                     <hr>
-                    <div id="add_err2"></div>
-                    <form role="form">
+                    <div id="add_err2"> <?php echo $result ; ?> </div>
+                    <form role="form" action = "contact.php" method = "post">
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label>Name</label>
-                                <input type="text" id="fname" name="fname" maxlength="25" class="form-control">
+                                <input type="text" id="fname" name="name" maxlength="25" class="form-control">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Email Address</label>
@@ -95,7 +130,7 @@
                                 <textarea class="form-control" id="message" name="message" maxlength="100" rows="6"></textarea>
                             </div>
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="contact" class="btn btn-default">Submit</button>
+                                <button type="submit" id="contact" name ="submit" class="btn btn-default">Submit</button>
                             </div>
                         </div>
                     </form>
