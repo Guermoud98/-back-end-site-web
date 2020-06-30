@@ -15,40 +15,20 @@ if(isset($_POST['create'])) {
    $lastName = strtolower(trim($_POST['lname']));
    $email = strtolower(trim($_POST['email']));
    $password = strtolower(trim($_POST['password']));
+
+   $password = md5($password);
    
 
-//    $firstname = mysqli_real_escape_string($conn,$firstName);
-//    $lastname = mysqli_real_escape_string($conn,$lastName);
-//    $email = mysqli_real_escape_string($conn,$email);
-//    $password = mysqli_real_escape_string($conn,$password);
 
-
-
-/* Expressin régulière : /^[a-zA-Z0-9]*$/ ==> signification : ^ cela veut dire qu'on veut  [a-zA-Z0-9]  au début (s'ils apparaissent au début === vrai) ==>indique le début d'une chaîne
-l' * : elle signifie qu'on doit avoir [a-zA-Z0-9] soit 0 fois 1fois ou plusieurs fois
-le $: (dollar) : indique la fin d'une chaîne.
-
-*/
 
    
 
-        //  $sql_first = "SELECT * FROM users WHERE fname_users = '$firstName'";
-        //  $sql_last = "SELECT * FROM users WHERE lname_users = '$lastName'";
          $sql_email =  "SELECT * FROM users WHERE email_users = '$email';";
-
-        //  $res_first = mysqli_query($conn, $sql_first) or die(mysqli_error($dbName));
-        //  $res_last = mysqli_query($conn, $sql_last) or die(mysqli_error($dbName));
-         $res_email = mysqli_query($conn, $sql_email) or die(mysqli_error($dbName));
+         $res_email = mysqli_query($conn, $sql_email) or die(mysqli_error($conn));
 
           if (empty($firstName) || empty($lastName) || empty($email) || empty($password)) {
-            $error = "<div class='alert alert-danger'>fill up the fields</div>";
-
+          $error = "<div class='alert alert-danger'>fill up the fields</div>";
     }   
-    //     else if(!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-z]*$/", $firstName) && !preg_match("/^[a-z]*$/", $lastName)) {
-    //      $error = "<div class='alert alert-danger'>please fill up </div>";
-           
-
-    //    } 
        else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "<div class='alert alert-danger'>your first name can't contain numbers</div>";
            
@@ -75,31 +55,14 @@ le $: (dollar) : indique la fin d'une chaîne.
           else {
               
             $query = "INSERT INTO users(fname_users,lname_users,email_users,password_users) VALUES ('{$firstName}','{$lastName}','{$email}','{$password}')";
-            $result = mysqli_query($conn,$query) or die(mysqli_error($dbName));
+            $result = mysqli_query($conn,$query) or die(mysqli_error($conn));
 
             echo "saved";
             
          }
 
-         require_once 'PHPMailer-5.2-stable/class.phpmailer.php';
-
-
+         
         }
-
-
-
-
-
-
-
-
-
-
-  
-   
-
-      
-
 
 
 ?>
@@ -153,6 +116,7 @@ le $: (dollar) : indique la fin d'une chaîne.
         
         <div class="row">
             <div class="box">
+            
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Registration

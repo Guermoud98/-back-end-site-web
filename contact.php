@@ -4,7 +4,7 @@
      if(isset($_POST['submit'])) {
      require 'PHPMailer/PHPMailerAutoload.php';
      $mail = new PHPMailer;
-
+     
      $mail->isSMTP();   
      $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -23,6 +23,7 @@
     
      if(!$mail->send()) {
         $result =  "<div class='alert alert-danger'>Message has not been sent </div>";
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
      } 
      else {
          $result = "<div class='alert alert-info'> Thank you for contacting us.</div>";

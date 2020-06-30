@@ -85,8 +85,9 @@ if (isset($_SESSION['id'])) {
                 <div class="col-lg-12">
                 <h2 class="text-center">Welcome <?php echo $full_name?> </h2>
                     <hr>
-                    <h2 class="intro-text text-center">The Perfect Cup <a id="logout" href="logout.php">logout</a>
+                    <h2 class="intro-text text-center">The Perfect Cup 
                         <strong>blog</strong>
+                        <a id="logout" href="logout.php">logout</a>
                     </h2>
                     <hr>
                 </div>
@@ -186,6 +187,8 @@ if (isset($_SESSION['id'])) {
 			</div>
 		</div>
 	</div>
+
+    
     <footer>
         <div class="container">
             <div class="row">
